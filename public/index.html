@@ -2,14 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="React + TypeScript 全新实现lin-cms前端"
     />
-    <link rel="apple-touch-icon" href="logo192.png" />
+    <script src="//at.alicdn.com/t/font_1104271_so151lbumpq.js"></script>
+    <link rel="apple-touch-icon" href="favicon.ico" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -24,10 +26,97 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>lin-cms</title>
+    <style>
+      #loader {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background:#fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: display 1s ease .5s;
+      }
+      .loader-logo {
+        width: 60px;
+        height: 98px;
+        position: fixed;
+        left: 20%;
+        top: 43%;
+      }
+      .spinner {
+        position: relative;
+        line-height: 0;
+        box-sizing: border-box;
+        width: 40px;
+        height: 40px;
+        color: #3963bc;
+      }
+
+      .spinner:before {
+        content: '';
+        width: 100%;
+        height: 20%;
+        min-width: 5px;
+        background: #000;
+        opacity: 0.1;
+        position: absolute;
+        bottom: 0%;
+        left: 0;
+        border-radius: 50%;
+        animation: rotate-square-2-shadow .5s linear infinite;
+      }
+      .spinner:after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: #3963bc;
+        animation: rotate-square-2-animate .5s linear infinite;
+        position: absolute;
+        bottom:40%;
+        left: 0;
+        border-radius: 3px;
+      }
+    
+
+    @keyframes rotate-square-2-animate {
+      17% {
+        border-bottom-right-radius: 3px;
+      }
+      25% {
+        transform: translateY(20%) rotate(22.5deg);
+      }
+      50% {
+        transform: translateY(40%) scale(1, .9) rotate(45deg);
+        border-bottom-right-radius: 50%;
+      }
+      75% {
+        transform: translateY(20%) rotate(67.5deg);
+      }
+      100% {
+        transform: translateY(0) rotate(90deg);
+      }
+    }
+
+    @keyframes rotate-square-2-shadow {
+      0%, 100% {
+        transform: scale(1, 1);
+      }
+      50% {
+        transform: scale(1.2, 1);
+      }
+    }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="loader">
+      <div class="spinner spinner--rotate-square-2"></div>
+      <img src="./static/img/logo.png" alt="" class="loader-logo">
+    </div>
     <div id="root"></div>
     <!--
       This HTML file is a template.
